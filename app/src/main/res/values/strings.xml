@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lab7</string>
+    <string name="phone">Phone</string>
+    <string name="name">Name</string>
+    <string name="mail">Mail</string>
+    <string name="save">save</string>
+    <string name="delete_all">Delete All Contacts</string>
+    <string name="_1">1</string>
+</resources>
