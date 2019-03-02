@@ -34,42 +34,56 @@
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="30dp"/>
     <TextView
             android:text="@string/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="126dp"
+            android:layout_height="22dp"
             android:id="@+id/fillName"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="163dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="184dp" android:layout_marginBottom="35dp"
-            app:layout_constraintBottom_toTopOf="@+id/fillMail" android:layout_marginTop="151dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+            android:layout_marginEnd="184dp" android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/fillMail" android:layout_marginTop="95dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintHorizontal_bias="0.37"
+            android:textAlignment="center"/>
     <TextView
             android:text="@string/mail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="189dp"
+            android:layout_height="27dp"
             android:id="@+id/fillMail"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/fillName" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="168dp" android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/fillPhone" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="190dp"/>
+            android:layout_marginEnd="190dp" app:layout_constraintHorizontal_bias="0.387"
+            android:textAlignment="center"/>
     <TextView
             android:text="@string/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="138dp"
+            android:layout_height="25dp"
             android:id="@+id/fillPhone" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="162dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="183dp" android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/fillMail" app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginBottom="10dp" app:layout_constraintBottom_toTopOf="@+id/fillPriority"/>
+            app:layout_constraintTop_toBottomOf="@+id/fillMail" app:layout_constraintHorizontal_bias="0.372"
+            android:layout_marginBottom="10dp" app:layout_constraintBottom_toTopOf="@+id/fillPriority"
+            android:textAlignment="center"/>
     <TextView
             android:text="@string/Prioridad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="19dp"
             android:id="@+id/fillPriority" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="250dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="200dp" android:layout_marginBottom="94dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/fillPhone" app:layout_constraintHorizontal_bias="0.888"
+            app:layout_constraintTop_toBottomOf="@+id/fillPhone" app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+            android:text="@string/indicaPr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/subPri"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="43dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="102dp"
+            app:layout_constraintEnd_toStartOf="@+id/fillPriority" android:layout_marginEnd="42dp"
+            android:layout_marginTop="213dp" app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"
+            android:textAlignment="textEnd"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

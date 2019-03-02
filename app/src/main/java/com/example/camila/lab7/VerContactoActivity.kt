@@ -1,6 +1,7 @@
 package com.example.camila.lab7
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,16 +14,11 @@ import kotlinx.android.synthetic.main.activity_ver_contacto.*
 class VerContactoActivity : AppCompatActivity() {
 
     companion object {
-        /*const val EXTRA_ID = "com.example.camila.lab7.EXTRA_ID"
-        const val EXTRA_NAME = "com.example.camila.lab7.EXTRA_NAME"
-        const val EXTRA_PHONE = "com.example.camila.lab7.EXTRA_PHONE"
-        const val EXTRA_MAIL = "com.example.camila.lab7.EXTRA_MAIL"
-        const val EXTRA_PRIORITY = "com.example.camila.lab7.EXTRA_PRIORITY"*/
         const val EDIT_CONTACT_REQUEST = 3
     }
 
     lateinit var  contactViewModel: ContactViewModel
-    var currentId:Int= -1
+    private var currentId:Int= -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +31,27 @@ class VerContactoActivity : AppCompatActivity() {
         fillMail.text = intent.getStringExtra(MainActivity.EXTRA_MAIL)
         fillPriority.text = intent.getIntExtra(MainActivity.EXTRA_PRIORITY, 1).toString()
         currentId = intent.getIntExtra(MainActivity.EXTRA_ID, 1)
+
+        //Se llama al contacto si hace click es su numero telefonico
+        fillPhone.setOnClickListener{
+            val intent = Intent(Intent.ACTION_DIAL,Uri.parse("tel:${intent.getStringExtra(MainActivity.EXTRA_PHONE)}"))
+            startActivity(intent)
+        }
+
+        //Si apacha en el email, se abrira la actividad para enviar un correo electronico
+        fillMail.setOnClickListener{
+            val intent  = Intent(this, CorreoActivity::class.java)
+            intent.putExtra("recipientMail",MainActivity.EXTRA_MAIL)
+            startActivity(intent)
+        }
+
     }
 
-    //Boton para ver activity de nuevo contacto
+    //Boton para regresar al main
     fun back2Home(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
-    /*fun sendMail(view: View) {
-        //val intent = Intent(this, CorreoActivity::class.java)
-        //startActivity(intent)
-    }
 
-    fun makeCall(view: View) {
-
-
-    }*/
 }

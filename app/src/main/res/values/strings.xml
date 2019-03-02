@@ -7,4 +7,10 @@
     <string name="delete_all">Delete All Contacts</string>
     <string name="_1">1</string>
     <string name="Prioridad">prio</string>
+    <string name="indicaPr">Prioridad:</string>
+    <string name="msg">Redacta tu mensaje</string>
+    <string name="btnBack">BACK</string>
+    <string name="asunto">Asunto</string>
+    <string name="who">Destinatario</string>
+    <string name="enviarMail">Enviar Mail</string>
 </resources>
