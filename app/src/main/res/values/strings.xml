@@ -13,4 +13,5 @@
     <string name="asunto">Asunto</string>
     <string name="who">Destinatario</string>
     <string name="enviarMail">Enviar Mail</string>
+    <string name="priority">Priority:</string>
 </resources>

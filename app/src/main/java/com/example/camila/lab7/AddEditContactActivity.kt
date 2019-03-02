@@ -1,4 +1,9 @@
 package com.example.camila.lab7
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta activity permite editar un contacto seleccionado o
+crear uno nuevo y guardarlo posteriormente
+ */
 
 import android.app.Activity
 import android.content.Intent
@@ -18,14 +23,16 @@ class AddEditContactActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_contact)
-
+        //Valores de prioridad que un contacto puede tener
         number_picker_priority.minValue = 1
         number_picker_priority.maxValue = 10
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
 
+        //Se verifica si se editara o se creara un contacto
         if (intent.hasExtra(MainActivity.EXTRA_ID)) {
             title = "Edit Contact"
+            //Los campos se rellenan con informacion ya guardada
             edit_text_name.setText(intent.getStringExtra(MainActivity.EXTRA_NAME))
             edit_text_phone.setText(intent.getStringExtra(MainActivity.EXTRA_PHONE))
             edit_text_mail.setText(intent.getStringExtra(MainActivity.EXTRA_MAIL))
@@ -40,6 +47,7 @@ class AddEditContactActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        //Si seleccion el icono de la parte superior, los datos ingresados se guardan
         return when (item?.itemId) {
             R.id.save_contact -> {
                 saveContact()
@@ -51,11 +59,13 @@ class AddEditContactActivity : AppCompatActivity() {
     }
     private fun saveContact() {
         if (edit_text_name.text.toString().trim().isBlank() || edit_text_mail.text.toString().trim().isBlank()) {
+            //Si no ingreso texto el contacto no se crea
             Toast.makeText(this, "No puedes ingresar un contacto sin nombre!", Toast.LENGTH_SHORT).show()
             return
         }
 
         val data = Intent().apply {
+            //Si si ingreso informacion, se rellenan las variables
             putExtra(MainActivity.EXTRA_NAME, edit_text_name.text.toString())
             putExtra(MainActivity.EXTRA_PHONE, edit_text_phone.text.toString())
             putExtra(MainActivity.EXTRA_MAIL, edit_text_mail.text.toString())
@@ -68,5 +78,4 @@ class AddEditContactActivity : AppCompatActivity() {
         setResult(Activity.RESULT_OK, data)
         finish()
     }
-
 }

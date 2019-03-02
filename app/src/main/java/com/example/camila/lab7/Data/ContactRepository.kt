@@ -1,4 +1,9 @@
 package com.example.camila.lab7.Data
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta clase tiene una instancia de la interfaz ContactDao y un Lista en "vivo" de todos
+los contactos en la DB
+ */
 
 import android.app.Application
 import android.os.AsyncTask

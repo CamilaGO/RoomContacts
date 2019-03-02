@@ -1,4 +1,9 @@
 package com.example.camila.lab7.adapters
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta clase hace posible la presentacion de contactos en un cardview
+y recyclerView para mejor accesibilidad
+ */
 
 
 import android.view.LayoutInflater

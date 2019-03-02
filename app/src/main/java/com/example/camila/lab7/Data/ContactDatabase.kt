@@ -1,4 +1,9 @@
 package com.example.camila.lab7.Data
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta clase abstracta implementa la interfaz ContactDao para poder
+utilizar los metodos con los contactos
+ */
 
 import android.content.Context
 import android.os.AsyncTask
@@ -16,6 +21,7 @@ abstract class ContactDatabase : RoomDatabase() {
     companion object {
         private var instance: ContactDatabase? = null
 
+        //Se brinda seguridad a la data
         fun getInstance(context: Context): ContactDatabase? {
             if (instance == null) {
                 synchronized(ContactDatabase::class) {
@@ -48,6 +54,7 @@ abstract class ContactDatabase : RoomDatabase() {
         private val contactDao = db?.contactDao()
 
         override fun doInBackground(vararg p0: Unit?) {
+            //Se ingresan datos por default
             contactDao?.insert(Contact("Camila", "55249338", "gon18398@uvg.edu.gt", 1))
             contactDao?.insert(Contact("Eveling", "44972678", "eveling70@gmai.com", 2))
             contactDao?.insert(Contact("Paula", "22335771", "pcgo02@gmail.com", 3))

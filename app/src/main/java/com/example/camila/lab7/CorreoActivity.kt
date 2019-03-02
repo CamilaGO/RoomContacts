@@ -1,4 +1,9 @@
 package com.example.camila.lab7
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta activity permite al usuario ingresar un destinatario, asunto y mensaje
+para luego enviarlo via electronica
+ */
 
 import android.content.Intent
 import android.net.Uri
@@ -40,7 +45,7 @@ class CorreoActivity : AppCompatActivity() {
         }
     }
 
-    //Boton para ver activity de nuevo contacto
+    //Boton para regresar al main
     fun onClick_Back(view: View){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

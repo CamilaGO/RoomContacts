@@ -1,4 +1,9 @@
 package com.example.camila.lab7
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta activity muestra los datos de un contacto seleccionado en el main
+y permite al usuario enviarle un mail, llamarlo o editar su informacion
+ */
 
 import android.app.Activity
 import android.content.Intent
@@ -25,9 +30,9 @@ class VerContactoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_contacto)
-
+        // Se conecta con el ViewModel
         contactViewModel = ViewModelProviders.of(this).get(ContactViewModel::class.java)
-
+        //Se rellenan los datos
         fillName.text = intent.getStringExtra(MainActivity.EXTRA_NAME)
         fillPhone.text = intent.getStringExtra(MainActivity.EXTRA_PHONE)
         fillMail.text = intent.getStringExtra(MainActivity.EXTRA_MAIL)
@@ -58,7 +63,7 @@ class VerContactoActivity : AppCompatActivity() {
     //Boton para editar la informacion del contacto
     fun editContact(view: View){
         var intent = Intent(baseContext, AddEditContactActivity::class.java)
-
+        //Se obtiene la información del dato previamente almacenada en la DB
         intent.putExtra(MainActivity.EXTRA_ID, currentId)
         intent.putExtra(MainActivity.EXTRA_NAME, fillName.text.toString())
         intent.putExtra(MainActivity.EXTRA_PHONE, fillPhone.text.toString())
@@ -71,9 +76,11 @@ class VerContactoActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == EDIT_CONTACT_REQUEST && resultCode == Activity.RESULT_OK) {
+            //Si decide editar el contacto
             val id = data?.getIntExtra(MainActivity.EXTRA_ID, -1)
 
             val updateContact = Contact(
+                //Se llenan los campos
                 data!!.getStringExtra(MainActivity.EXTRA_NAME),
                 data.getStringExtra(MainActivity.EXTRA_PHONE),
                 data.getStringExtra(MainActivity.EXTRA_MAIL),
@@ -83,7 +90,7 @@ class VerContactoActivity : AppCompatActivity() {
             updateContact.id = id!!
             contactViewModel.update(updateContact)
 
-            //Updating contact
+            //El contacto se actualiza
             fillName.text = updateContact.name
             fillPhone.text = updateContact.phone
             fillMail.text = updateContact.mail

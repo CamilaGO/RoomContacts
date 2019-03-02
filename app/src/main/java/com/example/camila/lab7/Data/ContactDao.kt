@@ -1,5 +1,9 @@
 package com.example.camila.lab7.Data
-
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta interfaz ofrece las operaciones necesarias para manejar
+los contactos
+ */
 import androidx.lifecycle.LiveData
 import androidx.room.*
 

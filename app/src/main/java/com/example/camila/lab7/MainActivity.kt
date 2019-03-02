@@ -1,4 +1,9 @@
 package com.example.camila.lab7
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta activity presenta los contactos guardados, permite seleccionarlos y ver el "perfil" de un contacto.
+Tambien permite agregar un nuevo contacto, borrar uno o borrar todos los contactos
+ */
 
 import android.app.Activity
 import android.content.Intent
@@ -16,6 +21,7 @@ import com.example.camila.lab7.Data.Contact
 import com.example.camila.lab7.VerContactoActivity.Companion.EDIT_CONTACT_REQUEST
 import com.example.camila.lab7.adapters.ContactAdapter
 import com.example.camila.lab7.viewmodels.ContactViewModel
+import kotlinx.android.synthetic.main.activity_add_contact.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         buttonAddContact.setOnClickListener {
+            //Si quiere guardar un nuevo contacto en la DB
             startActivityForResult(
                 Intent(this, AddEditContactActivity::class.java),
                 ADD_CONTACT_REQUEST
@@ -75,6 +82,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener(object : ContactAdapter.OnItemClickListener {
             override fun onItemClick(contact: Contact) {
+                //Si presiona uno, se obtiene su informacion y se redirecciona a la VerContactoActivity
                 var intent = Intent(baseContext, VerContactoActivity::class.java)
                 intent.putExtra(EXTRA_ID, contact.id)
                 intent.putExtra(EXTRA_NAME, contact.name)
@@ -96,6 +104,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
+            //Si desea borrar todos los contactos
             R.id.delete_all_contacts -> {
                 contactViewModel.deleteAllContacts()
                 Toast.makeText(this, "Eliminaste todos los contactos!", Toast.LENGTH_SHORT).show()
@@ -111,6 +120,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == ADD_CONTACT_REQUEST && resultCode == Activity.RESULT_OK) {
+            //Si quiere agregar un nuevo contacto a la DB
             val newContact = Contact(
                 data!!.getStringExtra(EXTRA_NAME),
                 data!!.getStringExtra(EXTRA_PHONE),
@@ -124,19 +134,21 @@ class MainActivity : AppCompatActivity() {
             val id = data?.getIntExtra(EXTRA_ID, -1)
 
             if (id == -1) {
+                //Si cometio alguno error y fue imposible actualizar la info
                 Toast.makeText(this, "No se pudo actualizar! Error!", Toast.LENGTH_SHORT).show()
             }
 
             val updateContact = Contact(
+                //Si quiere actualizar los datos de un solo user
                 data!!.getStringExtra(EXTRA_NAME),
                 data.getStringExtra(EXTRA_PHONE),
                 data.getStringExtra(EXTRA_MAIL),
                 data.getIntExtra(EXTRA_PRIORITY, 1)
             )
             updateContact.id = data.getIntExtra(EXTRA_ID, -1)
-            contactViewModel.update(updateContact)
 
         } else {
+            //Si cometio alguno error y fue imposible guardar la info
             Toast.makeText(this, "Contacto no guardado!", Toast.LENGTH_SHORT).show()
         }
 

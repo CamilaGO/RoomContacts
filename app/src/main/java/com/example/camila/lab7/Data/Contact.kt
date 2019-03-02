@@ -1,4 +1,10 @@
 package com.example.camila.lab7.Data
+/*      Paula Camila Gonzalez Ortega - Carnet 18398
+             Plataformas moviles - Seccion 10
+Esta clase permite crear objetos de tipo contacto con sus respectivos atributos
+para crear una tabla en la DB de ellos
+ */
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.sql.Blob
