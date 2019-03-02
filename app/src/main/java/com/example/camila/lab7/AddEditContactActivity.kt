@@ -12,11 +12,7 @@ import kotlinx.android.synthetic.main.activity_add_contact.*
 class AddEditContactActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_ID = "com.example.camila.lab7.EXTRA_ID"
-        const val EXTRA_NAME = "com.example.camila.lab7.EXTRA_NAME"
-        const val EXTRA_PHONE = "com.example.camila.lab7.EXTRA_PHONE"
-        const val EXTRA_MAIL = "com.example.camila.lab7.EXTRA_MAIL"
-        const val EXTRA_PRIORITY = "com.example.camila.lab7.EXTRA_PRIORITY"
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +24,12 @@ class AddEditContactActivity : AppCompatActivity() {
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
 
-        if (intent.hasExtra(EXTRA_ID)) {
+        if (intent.hasExtra(MainActivity.EXTRA_ID)) {
             title = "Edit Contact"
-            edit_text_name.setText(intent.getStringExtra(EXTRA_NAME))
-            edit_text_phone.setText(intent.getStringExtra(EXTRA_PHONE))
-            edit_text_mail.setText(intent.getStringExtra(EXTRA_MAIL))
-            number_picker_priority.value = intent.getIntExtra(EXTRA_PRIORITY, 1)
+            edit_text_name.setText(intent.getStringExtra(MainActivity.EXTRA_NAME))
+            edit_text_phone.setText(intent.getStringExtra(MainActivity.EXTRA_PHONE))
+            edit_text_mail.setText(intent.getStringExtra(MainActivity.EXTRA_MAIL))
+            number_picker_priority.value = intent.getIntExtra(MainActivity.EXTRA_PRIORITY, 1)
         } else {
             title = "Add Contact"
         }
@@ -60,12 +56,12 @@ class AddEditContactActivity : AppCompatActivity() {
         }
 
         val data = Intent().apply {
-            putExtra(EXTRA_NAME, edit_text_name.text.toString())
-            putExtra(EXTRA_PHONE, edit_text_phone.text.toString())
-            putExtra(EXTRA_MAIL, edit_text_mail.text.toString())
-            putExtra(EXTRA_PRIORITY, number_picker_priority.value)
-            if (intent.getIntExtra(EXTRA_ID, -1) != -1) {
-                putExtra(EXTRA_ID, intent.getIntExtra(EXTRA_ID, -1))
+            putExtra(MainActivity.EXTRA_NAME, edit_text_name.text.toString())
+            putExtra(MainActivity.EXTRA_PHONE, edit_text_phone.text.toString())
+            putExtra(MainActivity.EXTRA_MAIL, edit_text_mail.text.toString())
+            putExtra(MainActivity.EXTRA_PRIORITY, number_picker_priority.value)
+            if (intent.getIntExtra(MainActivity.EXTRA_ID, -1) != -1) {
+                putExtra(MainActivity.EXTRA_ID, intent.getIntExtra(MainActivity.EXTRA_ID, -1))
             }
         }
 

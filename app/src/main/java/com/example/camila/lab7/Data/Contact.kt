@@ -1,6 +1,7 @@
 package com.example.camila.lab7.Data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.sql.Blob
 
 @Entity(tableName = "contact_table")
 data class Contact(
